@@ -1,12 +1,47 @@
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo-with-name.png'
 import bgImg from '../../assets/signup.jpg'
+import useAuth from '../../Hooks/useAuth';
+import toast from 'react-hot-toast';
 const RegistrationPage = () => {
+    const {createUser,signInGoogle,updateUser} = useAuth()
 
     const handleGoogleSignIn = () => {
-
+        signInGoogle()
+        .then(result => {
+            if(result.user){
+                toast.success('Login Successful')
+            }
+        })
+        .catch(error => {
+            console.log(error.message);
+            toast.error(`${error.message.split('/')[1].split(')')[0]}`)
+        })
     }
     const handleSignUp = e => {
+        e.preventDefault()
+
+        const form = e.target;
+        const email = form.email.value;
+        const name = form.name.value;
+        const password = form.password.value;
+        const photo = form.photo.value;
+
+        createUser(email,password)
+        .then( () =>  {
+            updateUser(name,photo)
+            .then(result => {
+                toast.success('Account Created Successfully')
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+        })
+        .catch(error => {
+            console.log(error.message);
+            toast.error(`${error.message.split('/')[1].split(')')[0]}`)
+        })
         
     }
 

@@ -1,13 +1,48 @@
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo-with-name.png'
 import bgImg from '../../assets/shopingnowbg.jpg'
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
-    const  handleGoogleSignIn = ()=> {
 
+    const {signInGoogle, signIn} = useAuth()
+
+
+
+
+    const handleGoogleSignIn = () => {
+        signInGoogle()
+        .then(result => {
+            if(result.user){
+                toast.success('Login Successful')
+            }
+        })
+        .catch(error => {
+            console.log(error.message);
+            toast.error(`${error.message.split('/')[1].split(')')[0]}`)
+        })
     }
-    const handleSignIn = () => {
+    const handleSignIn = e => {
 
+        e.preventDefault()
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+
+
+
+        signIn(email,password)
+        .then(res => {
+            console.log(res.user);
+            toast.success('Login Successful')
+        })
+        .catch(error => {
+            console.log(error.message);
+            toast.error(`${error.message.split('/')[1].split(')')[0]}`)
+        })
     }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12 font-poppins'>

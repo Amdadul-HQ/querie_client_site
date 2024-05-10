@@ -8,8 +8,12 @@ const Header = () => {
                     <img className='w-10' src={logo} alt="" />
                     <h1 className='text-xl mt-4 text-[#DD752D] font-normal'><span className='text-[#27499C]  font-semibold'>SHOP</span> NOW</h1>
                 </div>
-                <div>
-
+                <div className='space-x-10 font-poppins text-xl font-normal'>
+                    <Link to='/'>Home</Link>
+                    <Link to='/queris'>Queris</Link>
+                    {/* <Link to='/addquery'>Add Queries</Link> */}
+                    <Link to='/myqueries'>My Queries</Link>
+                    <Link to='/myrecommendations'>My Recommendation</Link>
                 </div>
                 <div>
                     <Link to='/login'>Login</Link>
