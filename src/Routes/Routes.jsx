@@ -26,10 +26,10 @@ const router = createBrowserRouter([
                 path:'/registration',
                 element:<RegistrationPage/>
             },
-            // {
-            //     path:'/addquery',
-            //     element: <AddQuery/>
-            // },
+            {
+                path:'/addquery',
+                element: <AddQuery/>
+            },
             {
                 path:'/myqueries',
                 element:<MyQuery/>
