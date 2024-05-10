@@ -3,18 +3,21 @@ import axios from "axios";
 import addbg from '../../assets/addbg.png'
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+import useAuth from "../../Hooks/useAuth";
 
 
 const MyQuery = () => {
     
+  const {user} = useAuth()
 
     const {data} = useQuery({
-        queryKey:['post'],
+        queryKey:['post',user?.email],
         queryFn: async() => {
-            const res = await axios.get('http://localhost:5000/posts')
+            const res = await axios.get(`http://localhost:5000/queryPost?email=${user.email}`)
             return res.data
         }
     })
+    console.log(data);
     // const posts = data
 
     return (
@@ -55,25 +58,27 @@ const MyQuery = () => {
                 <div>
                   <div className="font-bold">
                     <p className="text-xl pb-1 border-b-2 mb-3 border-black w-fit">Query Title</p>
-                    <p className="text-base">{post.QueryTitle}</p>
+                    <p className="text-base">{post.queryTitle}</p>
                   </div>
                 </div>
               </div>
             </td>
             <td className="text-base text-black">
-              {new Date(post.DatePosted).toLocaleDateString()}
+              {post.postedDate}
             </td>
-            <td className="text-base text-black">{post.ProductName}</td>
-            <td className="text-base text-black">{post.BrandName}</td>
+            <td className="text-base text-black">{post.productName}</td>
+            <td className="text-base text-black">{post.brandName}</td>
             <th>
             <div className="flex overflow-hidden bg-white border divide-x rounded-lg rtl:flex-row-reverse dark:bg-gray-900 dark:border-gray-700 dark:divide-gray-700">
-    <button className="flex items-center py-1 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 gap-x-1 hover:bg-gray-100">
+    <Link to={`/details/${post._id}`}>
+    <button  className="flex items-center py-1 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 gap-x-1 hover:bg-gray-100">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">
             <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
 
         <span>View</span>
     </button>
+    </Link>
 
     <button className="flex items-center first:py-1 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 gap-x-1 hover:bg-gray-100">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5 sm:w-6 sm:h-6">

@@ -7,6 +7,7 @@ import RegistrationPage from "../Pages/RegistrationPage/RegistrationPage";
 import AddQuery from "../Pages/AddQuery/AddQuery";
 import MyQuery from "../Pages/MyQuery/MyQuery";
 import MyReommendations from "../Pages/MyRecommendations/MyReommendations";
+import Details from "../Pages/DetailsPage/Details";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
             {
                 path:'/myrecommendations',
                 element:<MyReommendations/>
+            },
+            {
+                path:'/details/:id',
+                element:<Details/>,
+                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`) 
             }
         ]
     }

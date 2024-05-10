@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from '../../assets/logo-with-name.png'
+import logo from '../../assets/shopnow.png'
 import bgImg from '../../assets/shopingnowbg.jpg'
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
