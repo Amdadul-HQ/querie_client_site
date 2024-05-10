@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import logo from '../../assets/shopnow.png'
 import './Header.css'
 import useAuth from '../../Hooks/useAuth';
@@ -25,13 +25,13 @@ const Header = () => {
                 <div className='space-x-10 font-poppins text-xl font-normal'>
                     <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/'>Home</NavLink>
                     <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/queris'>Queris</NavLink>
-                    <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/myqueries'>My Queries</NavLink>
-                    <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/recommendforme'>Recommend For Me</NavLink>
-                    <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/myrecommendation'>My Recommendation</NavLink>
+                    {user && <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/myqueries'>My Queries</NavLink>}
+                    {user && <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/recommendforme'>Recommend For Me</NavLink>}
+                    {user && <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/myrecommendation'>My Recommendation</NavLink>}
                 </div>
                 <div className='flex items-center gap-x-3'>
                     {
-                        user ? <button onClick={handleLogOut}>Log out</button> : <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3' : 'px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/login'>Login</NavLink>
+                        user ? <button className='text-xl px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white' onClick={handleLogOut}>Log out</button> : <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3 text-xl' : 'text-xl px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white'} to='/login'>Login</NavLink>
                     }
                     {
                         user && <img data-tooltip-content={user.email} data-tooltip-place="top" data-tooltip-id="my-tooltip" className='w-14 h-14 p-1 rounded-full border' src={user.photoURL}/>
