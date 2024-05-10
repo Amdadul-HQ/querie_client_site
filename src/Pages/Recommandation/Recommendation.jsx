@@ -1,31 +1,24 @@
-import axios from 'axios';
-import  { useEffect, useState } from 'react';
-import useAuth from '../../Hooks/useAuth';
+import { useEffect, useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+import axios from "axios";
 
-const MyReommendations = () => {
 
-    const [posts,setPosts] = useState([])
+const Recommendation = () => {
     const {user} = useAuth()
-
-    useEffect(()=>{
-        axios.get(`http://localhost:5000/recommendationPost?email=${user?.email}`)
+    const [posts,setPosts] = useState()
+    useEffect(()=> {
+        axios.get(`http://localhost:5000/myrecommendation?email=${user?.email}`)
         .then(res => {
-            console.log(res.data);
             setPosts(res.data)
+            
         })
         .catch(error => {
             console.log(error.message);
         })
     },[user])
-
-
-
     return (
         <div>
-            <div className="mt-4">
-                <h1 className="text-center font-medium text-3xl border-b-2 border-black w-fit mx-auto pb-2">My Query List</h1>
-                <div className="overflow-x-auto">
-  <table className="table">
+            <table className="table">
     {/* head */}
     <thead>
       <tr className="text-xl text-black">
@@ -76,10 +69,8 @@ const MyReommendations = () => {
       }
     </tbody>
   </table>
-</div>
-            </div>
         </div>
     );
 };
 
-export default MyReommendations;
+export default Recommendation;

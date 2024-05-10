@@ -8,6 +8,9 @@ import AddQuery from "../Pages/AddQuery/AddQuery";
 import MyQuery from "../Pages/MyQuery/MyQuery";
 import MyReommendations from "../Pages/MyRecommendations/MyReommendations";
 import Details from "../Pages/DetailsPage/Details";
+import QueryPage from "../Pages/QueryPage/QueryPage";
+import Recommendation from "../Pages/Recommandation/Recommendation";
+import UpdateQuery from "../Pages/UpdateQuery/UpdateQuery";
 
 const router = createBrowserRouter([
     {
@@ -37,16 +40,25 @@ const router = createBrowserRouter([
             },
             {
                 path:'/queris',
-                element:<MyQuery/>
+                element:<QueryPage/>
             },
             {
-                path:'/myrecommendations',
+                path:'/recommendforme',
                 element:<MyReommendations/>
+            },
+            {
+                path:'/myrecommendation',
+                element:<Recommendation/>
             },
             {
                 path:'/details/:id',
                 element:<Details/>,
                 loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`) 
+            },
+            {
+                path:'/update/:id',
+                element:<UpdateQuery/>,
+                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`)
             }
         ]
     }

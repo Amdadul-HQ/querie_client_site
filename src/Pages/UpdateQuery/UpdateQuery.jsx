@@ -1,38 +1,10 @@
-import axios from 'axios';
-import useAuth from '../../Hooks/useAuth';
+import { useLoaderData } from "react-router-dom";
 import addbg from '../../assets/addbg.png'
+const UpdateQuery = () => {
 
-const AddQuery = () => {
+    const {productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto,recommendationCount} = useLoaderData()
 
-    const {user} = useAuth()
-
-
-    const handleAddPost = e => {
-        e.preventDefault()
-
-        const form = e.target;
-        const email = user.email;
-        const name = user.displayName;
-        const userPhoto = user.photoURL;
-        const currentDate = new Date()
-        const postedDate = currentDate.toLocaleString()
-        const queryTitle = form.queryTitle.value;
-        const productName = form.productName.value;
-        const brandName = form.brandName.value;
-        const alternationReason = form.boycottingReason.value;
-        const productImg = form.productImg.value;
-        const recommendationCount = 0;
-        
-        
-        const queryPost = {productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto,recommendationCount}
-       console.log(queryPost);
-        axios.post('http://localhost:5000/queryPost',queryPost)
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+    const handleUpdatePost = e => {
 
     }
 
@@ -46,7 +18,7 @@ const AddQuery = () => {
                 backgroundPosition:'bottom'
                 }}>
                     <h1></h1>
-                <form onSubmit={handleAddPost} className='w-4/5 mx-auto space-y-6 py-7'>
+                <form onSubmit={handleUpdatePost} className='w-4/5 mx-auto space-y-6 py-7'>
                         <div className='w-full'>
                             <label className='text-white font-medium' htmlFor='QueryTItle'>Query Title</label>
                             <br />
@@ -82,4 +54,4 @@ const AddQuery = () => {
     );
 };
 
-export default AddQuery;
+export default UpdateQuery;

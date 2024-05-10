@@ -1,12 +1,14 @@
 import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Details = () => {
     const post = useLoaderData()
-    const {productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto,recommendationCount} = post
-
     const {user} = useAuth()
+
+    const {_id,productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto,recommendationCount} = post
+
 
     const handleRecommend = e => {
         e.preventDefault()
@@ -19,22 +21,34 @@ const Details = () => {
         const recommendUserEmail = user.email;
         const recommendUserName = user.displayName;
         const recommendUserPhoto = user.photoURL;
+        const userEmail = email;
+        const userName = name;
+        const queryId = _id;
+        const title = queryTitle;
+        const productname = productName;
+        const recommendDate = new Date().toLocaleDateString()
 
-        if(user.email === email){
+        if(user?.email === userEmail){
             return toast.error("You can't Recommand Your Self!!")
         }
 
         const recommendData = {
-            recommendQuerieTitle,recommendBrandName,recommendProductName,recommendReasonDetails,recommendProductImg,recommendUserEmail,recommendUserName,recommendUserPhoto
+           userName,queryId,title,productname,recommendDate,recommendQuerieTitle,recommendBrandName,recommendProductName,recommendReasonDetails,recommendProductImg,recommendUserEmail,recommendUserName,recommendUserPhoto,userEmail
         }
+        axios.post('http://localhost:5000/recommendationPost',recommendData)
+        .then(res => {
+            console.log(res.data);
+            toast.success('Recommendation Successful')
+        })
+        .catch(error => {
+            console.log(error.message);
+            toast.error(error.message.split('/')[1].split(')')[0])
+        })
 
         console.log(recommendData);
 
 
     }
-
-
-    console.log(post);
     return (
         <section className="font-montserrat container mx-auto flex ">
            <div className="w-1/2">
