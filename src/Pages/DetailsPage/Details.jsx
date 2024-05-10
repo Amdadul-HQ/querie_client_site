@@ -26,7 +26,8 @@ const Details = () => {
         const queryId = _id;
         const title = queryTitle;
         const productname = productName;
-        const recommendDate = new Date().toLocaleDateString()
+        const currentDate = new Date()
+        const recommendDate = currentDate.toLocaleString()
 
         if(user?.email === userEmail){
             return toast.error("You can't Recommand Your Self!!")
