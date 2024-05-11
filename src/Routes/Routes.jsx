@@ -11,6 +11,7 @@ import Details from "../Pages/DetailsPage/Details";
 import QueryPage from "../Pages/QueryPage/QueryPage";
 import Recommendation from "../Pages/Recommandation/Recommendation";
 import UpdateQuery from "../Pages/UpdateQuery/UpdateQuery";
+import PrivateComponet from "../Private/PrivateComponet";
 
 const router = createBrowserRouter([
     {
@@ -32,11 +33,11 @@ const router = createBrowserRouter([
             },
             {
                 path:'/addquery',
-                element: <AddQuery/>
+                element: <PrivateComponet><AddQuery/></PrivateComponet>
             },
             {
                 path:'/myqueries',
-                element:<MyQuery/>
+                element:<PrivateComponet><MyQuery/></PrivateComponet>
             },
             {
                 path:'/queris',
@@ -44,20 +45,20 @@ const router = createBrowserRouter([
             },
             {
                 path:'/recommendforme',
-                element:<MyReommendations/>
+                element:<PrivateComponet><MyReommendations/></PrivateComponet>
             },
             {
                 path:'/myrecommendation',
-                element:<Recommendation/>
+                element:<PrivateComponet><Recommendation/></PrivateComponet>
             },
             {
                 path:'/details/:id',
-                element:<Details/>,
+                element:<PrivateComponet><Details/></PrivateComponet>,
                 loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`,{credentials:'include'}) 
             },
             {
                 path:'/update/:id',
-                element:<UpdateQuery/>,
+                element:<PrivateComponet><UpdateQuery/></PrivateComponet>,
                 loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`,{credentials:'include'})
             }
         ]
