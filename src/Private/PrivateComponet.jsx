@@ -2,8 +2,8 @@ import useAuth from "../Hooks/useAuth";
 
 const PrivateComponet = ({children}) => {
 
-    const {user} = useAuth()
-
+    const {user,loading} = useAuth()
+    if(!user)return 
 
     return children
 };

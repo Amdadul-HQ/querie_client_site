@@ -23,7 +23,7 @@ const UpdateQuery = () => {
 
         const updateQuery = {updateQueryTitle,updateEmail,updateUserName,updateUserPhotoUrl,updateProductImg,updateProductName,updateBrandName,updateAlternationReason,updatePostedDate}
 
-        axios.patch(`http://localhost:5000/update/${_id}`,updateQuery)
+        axios.patch(`http://localhost:5000/update/${_id}`,updateQuery,{withCredentials:true})
         .then(res => {
             console.log(res.data);
             toast.success('Query Update Successfully!!')

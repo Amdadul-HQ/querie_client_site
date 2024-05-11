@@ -13,7 +13,7 @@ const MyQuery = () => {
     const {data,refetch} = useQuery({
         queryKey:['post',user?.email],
         queryFn: async() => {
-            const res = await axios.get(`http://localhost:5000/queryPost?email=${user.email}`)
+            const res = await axios.get(`http://localhost:5000/queryPost?email=${user.email}`,{withCredentials:true})
             return res.data
         }
     })
@@ -83,20 +83,20 @@ const MyQuery = () => {
             {
               data && data.map(post => <div key={post._id} className="lg:flex border-2 border-l-0 rounded-xl">
               <div className="relative">
-                <img className="object-cover w-full h-56 rounded-lg rounded-r-none " src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt=""/>
+                <img className="object-cover w-full h-56 rounded-lg rounded-r-none " src={post.productImg} alt=""/>
                 <div className="absolute bottom-0 bg-white px-2 gap-x-2 flex items-center py-1 rounded-tr-lg">
                   <img className="w-12 h-12 rounded-full my-2" src={post.userPhoto} alt="" />
                   <p>{post.name}</p>
                 </div>
                   <div className="absolute bottom-1 left-16">
-                    <span className="text-sm text-gray-500 dark:text-gray-300">{post.postedDate}</span>
+                    {/* <span className="text-sm text-gray-500 dark:text-gray-300">{post.postedDate}</span> */}
                   </div>
               </div>
               <div className="flex flex-col gap-3 py-6 lg:mx-6">
                   <a href="#" className="text-xl font-semibold text-gray-800 hover:underline dark:text-white ">
                       {post.queryTitle}
                   </a>
-                <p>{post.alternationReason}</p>
+                <p>{post.alternationReason.slice(0,100)}...</p>
                 <div className="flex justify-between gap-8">
                   <p>Product :{post.productName}</p>
                   <p>Brand :{post.brandName}</p>

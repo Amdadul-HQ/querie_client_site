@@ -53,12 +53,12 @@ const router = createBrowserRouter([
             {
                 path:'/details/:id',
                 element:<Details/>,
-                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`) 
+                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`,{credentials:'include'}) 
             },
             {
                 path:'/update/:id',
                 element:<UpdateQuery/>,
-                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`)
+                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`,{credentials:'include'})
             }
         ]
     }
