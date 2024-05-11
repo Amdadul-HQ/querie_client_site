@@ -1,8 +1,9 @@
+import { Link } from "react-router-dom";
 
 
 const HeroSection = () => {
     return (
-        <section className="bg-white dark:bg-gray-900">
+        <section className="bg-white dark:bg-gray-900 font-montserrat">
     <div className="max-w-6xl px-6 py-10 mx-auto">
 
         <main className="relative z-20 w-full mt-8 md:flex md:items-center xl:mt-12">
@@ -16,8 +17,10 @@ const HeroSection = () => {
                         <p className="text-xl font-medium tracking-tight text-white">Helping Hand For Grow Up</p>
                     </div>
 
-                    <p className="mt-4 text-lg leading-relaxed text-white md:text-xl">suggests a supportive initiative aimed at aiding individuals in their journey of personal growth and development. This program or service could encompass mentorship</p>
-                    
+                    <p className="mt-4 text-lg leading-relaxed text-white md:text-xl">An invitation to share your thoughts, musings, and reflections with others in a open and supportive online space. Whether it's a random idea that popped into your head, a deep contemplation about life, or simply a moment of introspection</p>
+                    <Link to='/queris'>
+                    <button className=" mt-4 px-4 py-1 rounded-lg bg-slate-100 text-xl font-medium hover:text-white hover:bg-black border transition duration-300">View All Query</button>
+                    </Link>
                 </div>
             </div>
         </main>
