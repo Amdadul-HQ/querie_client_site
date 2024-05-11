@@ -3,6 +3,7 @@ import useAuth from '../../Hooks/useAuth';
 import addbg from '../../assets/addbg.png'
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const AddQuery = () => {
 
@@ -43,6 +44,11 @@ const AddQuery = () => {
 
     return (
         <section className='container mx-auto font-montserrat'>
+            <Helmet>
+                <title>
+                    Add Query
+                </title>
+            </Helmet>
             <div className="w-full  mx-auto rounded-2xl flex h-fit" style={{
                 background: `linear-gradient(45deg,rgba(0,0,0,0.7),rgba(0,0,0,0.4)),url(${addbg})`,
                 backgroundRepeat: 'no-repeat',

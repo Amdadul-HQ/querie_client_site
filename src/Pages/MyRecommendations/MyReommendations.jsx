@@ -2,6 +2,7 @@ import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MyReommendations = () => {
 
@@ -75,16 +76,22 @@ const MyReommendations = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>
+              Recommendation For Me
+            </title>
+          </Helmet>
             <div className="mt-4">
-                <h1 className="text-center font-medium text-3xl border-b-2 border-black w-fit mx-auto pb-2">My Query List</h1>
+                
                 <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
       <tr className="text-xl text-black">
-        <th>Product Details</th>
+        <th>Product Image</th>
+        <th>Product Title</th>
         <th>Published Date</th>
-        <th>Product Name</th>
+        <th>Recommender Email</th>
         <th>Product Brand</th>
         <th >Action</th>
       </tr>
@@ -97,22 +104,23 @@ const MyReommendations = () => {
               <div className="flex items-center gap-3">
                 <div className="avatar">
                   <div className="w-36 h-36 rounded-xl">
-                    <img src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+                    <img src={post.recommendProductImg} alt="" />
                   </div>
                 </div>
-                <div>
-                  <div className="font-bold">
-                    <p className="text-xl pb-1 border-b-2 mb-3 border-black w-fit">Query Title</p>
-                    <p className="text-base">{post.queryTitle}</p>
-                  </div>
-                </div>
+                
               </div>
             </td>
+            <td>
+            <div>
+                    <p className="text-xl pb-1 w-fit">{post.recommendQuerieTitle}</p>
+                    
+                </div>
+            </td>
             <td className="text-base text-black">
-              {post.postedDate}
+              {post.recommendDate}
             </td>
             <td className="text-base text-black">{post.recommendUserEmail}</td>
-            <td className="text-base text-black">{post.brandName}</td>
+            <td className="text-base text-black">{post.recommendBrandName}</td>
             <th>
             <div className="w-fit bg-white border divide-x rounded-lg rtl:flex-row-reverse dark:bg-gray-900 dark:border-gray-700 dark:divide-gray-700">
     <button onClick={()=> handleDelete(post._id)} className="flex items-center py-1 text-sm font-medium text-gray-600 transition-colors duration-200 sm:text-base sm:px-6 dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">

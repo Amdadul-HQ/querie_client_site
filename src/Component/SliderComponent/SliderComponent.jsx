@@ -20,12 +20,10 @@ const SliderComponent = () => {
     {
       id:1,
       image:"https://i.postimg.cc/PJxB6Wm4/bg1.jpg",
-      category:"Helping Hand For Grow Up",
-      description:" suggests a supportive initiative aimed at aiding individuals in their journey of personal growth and development. This program or service could encompass mentorship"
     },
     {
       id:1,
-      image:"https://i.postimg.cc/PJxB6Wm4/bg1.jpg",
+      image:"https://i.postimg.cc/zvqWMR12/sliderbg.jpg",
       category:"Post What are You Thinking",
       description:" an invitation to share your thoughts, musings, and reflections with others in a open and supportive online space. Whether it's a random idea that popped into your head, a deep contemplation about life, or simply a moment of introspection"
     }

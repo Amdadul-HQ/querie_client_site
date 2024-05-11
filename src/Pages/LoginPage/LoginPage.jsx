@@ -3,6 +3,7 @@ import logo from '../../assets/shopnow.png'
 import bgImg from '../../assets/shopingnowbg.jpg'
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const LoginPage = () => {
 
@@ -54,6 +55,11 @@ const LoginPage = () => {
     }
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12 font-poppins'>
+          <Helmet>
+            <title>
+              Log in
+            </title>
+          </Helmet>
         <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
           <div
             className='hidden bg-cover bg-center lg:block lg:w-1/2'

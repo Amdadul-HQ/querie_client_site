@@ -1,5 +1,6 @@
 import axios from 'axios';
 import  { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const QueryPage = () => {
@@ -15,9 +16,14 @@ const QueryPage = () => {
     },[])
     return (
         <section className='container mx-auto font-poppins'>
+            <Helmet>
+                <title>
+                    All Query
+                </title>
+            </Helmet>
                    <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 xl:grid-cols-3">
             {
-                posts && posts.slice(0,6).map(post => <div key={post._id}>
+                posts && posts.slice(0,6).map(post => <div className="border p-5 rounded-xl" key={post._id}>
                     <div className="relative">
                         <img className="object-cover object-center w-full h-64 rounded-lg lg:h-80" src={post.productImg} alt=""/>
     

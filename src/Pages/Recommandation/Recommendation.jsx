@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const Recommendation = () => {
@@ -79,6 +80,11 @@ const Recommendation = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>
+              My Recommendation
+            </title>
+          </Helmet>
             <table className="table">
     {/* head */}
     <thead>
@@ -98,13 +104,13 @@ const Recommendation = () => {
               <div className="flex items-center gap-3">
                 <div className="avatar">
                   <div className="w-36 h-36 rounded-xl">
-                    <img src="https://images.unsplash.com/photo-1624996379697-f01d168b1a52?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" />
+                    <img src={post.recommendProductImg} alt="" />
                   </div>
                 </div>
                 <div>
-                  <div className="font-bold">
-                    <p className="text-xl pb-1 border-b-2 mb-3 border-black w-fit">{post.recommendQuerieTitle}</p>
-                    <p className="text-base">{post.recommendReasonDetails}</p>
+                  <div className="font-normal">
+                    <p className="text-base pb-1 border-b-2 mb-3 border-black w-fit">{post.recommendQuerieTitle.slice(0,30)}...</p>
+                    {/* <p className="text-base">{post.recommendReasonDetails.slice(0,80)}...</p> */}
                   </div>
                 </div>
               </div>

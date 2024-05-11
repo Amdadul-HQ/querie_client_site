@@ -2,12 +2,22 @@ import { useLoaderData } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const Details = () => {
     const post = useLoaderData()
     const {user} = useAuth()
 
     const {_id,productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto,recommendationCount} = post
+
+    const {data,refetch} = useQuery({
+        queryKey : ['recomendation'],
+        queryFn:async ()=>{
+            const res = await axios.get(`http://localhost:5000/queryRecommendation/${_id}`,{withCredentials:true})
+            return res.data
+        }
+    })
 
 
     const handleRecommend = e => {
@@ -40,6 +50,8 @@ const Details = () => {
         .then(res => {
             console.log(res.data);
             toast.success('Recommendation Successful')
+            form.reset()
+            refetch()
         })
         .catch(error => {
             console.log(error.message);
@@ -51,7 +63,13 @@ const Details = () => {
 
     }
     return (
-        <section className="font-montserrat container mx-auto flex ">
+        <div className="font-poppins">
+            <Helmet>
+                <title>
+                    Query Details
+                </title>
+            </Helmet>
+            <section className="font-montserrat container mx-auto flex ">
            <div className="w-1/2">
                 <h1 className="text-3xl font-semibold text-center mb-10">Querie Details</h1>
            <div className="w-full border overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -75,7 +93,7 @@ const Details = () => {
                         </div>
                         <div className="mt-6 text-2xl font-semibold">
                             Recommendation:
-                            {recommendationCount}
+                            {data && data.length}
                         </div>
                     </div>
                 </div>
@@ -116,8 +134,28 @@ const Details = () => {
                 </form>
             </div>
            </div>
-
         </section>
+            <div className="container mx-auto my-10">
+                {
+                    data && data.map(i => <div className="bg-[rgba(39,39,39,0.05)] p-4 rounded-tl-none rounded-xl border gap-x-5 max-w-[770px] flex items-center" key={i._id}>
+                        <div className="w-1/2">
+                            <img className="w-full h-full" src={i.recommendProductImg} alt="" />
+                            <div>
+                            </div>
+                        </div>
+                        <div>
+                            <p className="text-xl font-medium border-b border-black">{i.recommendBrandName}</p>
+                            <p>{i.recommendReasonDetails}</p>
+                            <div className="flex items-center gap-x-3 text-base ">
+                                <img className="w-14 h-14 rounded-full p-1 border" src={i.recommendUserPhoto} alt="" />
+                                <p>{i.recommendUserName}</p>
+                                <p>{i.recommendData}</p>
+                            </div>
+                        </div>
+                    </div>)
+                }
+            </div>
+        </div>
     );
 };
 

@@ -4,6 +4,7 @@ import addbg from '../../assets/addbg.png'
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const MyQuery = () => {
@@ -66,6 +67,11 @@ const MyQuery = () => {
 
     return (
         <section className="container mx-auto font-poppins">
+          <Helmet>
+            <title>
+              My Query
+            </title>
+          </Helmet>
             <div className="w-full h-80 mx-auto rounded-2xl flex justify-center items-center" style={{
                 background: `linear-gradient(45deg,rgba(0,0,0,0.7),rgba(0,0,0,0.4)),url(${addbg})`,
                 backgroundRepeat: 'no-repeat',
