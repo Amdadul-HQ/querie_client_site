@@ -4,16 +4,52 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const QueryPage = () => {
+    const [search,setSearch] = useState()
     const [posts,setPosts] = useState()
     useEffect(()=>{
         axios.get('http://localhost:5000/queryPost')
         .then(res => {
-            setPosts(res.data)
+            setPosts(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)))
+            // console.log(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)));
         })
         .catch(error=> {
             console.log(error.message);
         } )
     },[])
+
+    const handleSearch = e => {
+        e.preventDefault()
+        setSearch(e.target.search.value)
+        axios.get(`http://localhost:5000/searchPost?search=${search}`)
+        .then(res => {
+            console.log(res.data);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
+    
+
+    // function sortByPostedDateAscending(a, b) {
+    //     const dateA = new Date(a.postedDate);
+    //     const dateB = new Date(b.postedDate);
+    //     return dateA - dateB;
+    // }
+
+    // const sortedDate = posts.sort(sortByPostedDateAscending)
+    // console.log(sortedDate);
+
+
+    // const customSort = (a, b) => new Date(b.postedDate) - new Date(a.postedDate);
+
+    // const sortDate = posts.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate))
+    
+    // console.log(sortDate);
+
+    // const dates = ["2024-05-11", "2023-03-15", "2022-09-30"];
+// const sortedDates = dates.sort((a, b) => new Date(b) - new Date(a));
+
+
     return (
         <section className='container mx-auto font-poppins'>
             <Helmet>
@@ -21,6 +57,17 @@ const QueryPage = () => {
                     All Query
                 </title>
             </Helmet>
+            <form onSubmit={handleSearch} className='flex items-center justify-center gap-x-4'>
+                <div>
+                    <label className="input input-bordered flex max-w-96 mx-auto items-center gap-2">
+                        <input type="search" name='search' className="grow" placeholder="Search Product Name" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
+                    </label>
+                </div>
+                <div className='flex'>
+                    <button type='submit' className='text-xl text-black hover:text-white hover:bg-black border-2 border-black transition duration-300 px-5 py-2 rounded-lg'>Search</button>
+                </div>
+            </form>
                    <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 xl:grid-cols-3">
             {
                 posts && posts.slice(0,6).map(post => <div className="border p-5 rounded-xl" key={post._id}>

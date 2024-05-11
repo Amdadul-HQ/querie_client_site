@@ -16,13 +16,15 @@ const HomePage = () => {
             </Helmet>
          <div className='relative'>
          <Banner/>   
-         <div className='absolute top-8 left-12'>
+         <div className='absolute lg:top-40 top-0 lg:left-12'>
          <HeroSection/>
          </div>
          </div>
+         <div className='mt-40'>
          <Post/>
          <MeetOursTeams/>
          <ContactUs/>
+         </div>
         </>
     );
 };

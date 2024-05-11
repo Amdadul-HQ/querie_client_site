@@ -149,7 +149,6 @@ const Details = () => {
                             <div className="flex items-center gap-x-3 text-base ">
                                 <img className="w-14 h-14 rounded-full p-1 border" src={i.recommendUserPhoto} alt="" />
                                 <p>{i.recommendUserName}</p>
-                                <p>{i.recommendData}</p>
                             </div>
                         </div>
                     </div>)

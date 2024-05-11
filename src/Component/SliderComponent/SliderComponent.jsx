@@ -12,13 +12,16 @@ import './styles.css';
 
 // import required modules
 import { Autoplay, Pagination, Navigation , EffectFade } from 'swiper/modules';
-import { Link } from 'react-router-dom';
 
 const SliderComponent = () => {
 
   const product = [
     {
       id:1,
+      image:"https://i.postimg.cc/8kM44Ls9/milad-fakurian-58-Z17ln-VS4-U-unsplash.jpg",
+    },
+    {
+      id:2,
       image:"https://i.postimg.cc/PJxB6Wm4/bg1.jpg",
     },
     {
@@ -53,7 +56,7 @@ const SliderComponent = () => {
                 background: `linear-gradient(45deg,rgba(0,0,0,0.7),rgba(0,0,0,0.4)),url(${item.image})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize:'cover',
-                backgroundPosition:'center'
+                backgroundPosition:'center',
                 }}>
             </div>
         </SwiperSlide> )

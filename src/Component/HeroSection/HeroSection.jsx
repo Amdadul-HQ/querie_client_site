@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => {
     return (
-        <section className="bg-white dark:bg-gray-900 font-montserrat">
+        <section className=" bg-transparent font-montserrat">
     <div className="max-w-6xl px-6 py-10 mx-auto">
 
         <main className="relative z-20 w-full mt-8 md:flex md:items-center xl:mt-12">
             <div className="absolute w-full bg-gray-900 -z-10 md:h-96 rounded-2xl"></div>
             
             <div className="w-full p-6 bg-[rgba(39,39,39,0.05)] md:flex md:items-center rounded-2xl md:bg-transparent md:p-0 lg:px-12 md:justify-evenly">
-                <img className="h-24 w-24 md:mx-6 rounded-full object-cover shadow-md md:h-[32rem] md:w-80 lg:h-[36rem] lg:w-[26rem] md:rounded-2xl" src="https://hiacode.com/hubfs/Imported_Blog_Media/iStock-497254373-e1529676396431-1.jpg" alt="client photo" />
+                <img className="h-24 w-24 md:mx-6 rounded-full object-cover shadow-md md:h-[32rem] md:w-80 lg:h-[36rem] lg:w-[26rem] md:rounded-2xl" src="https://i.postimg.cc/hPKL0wkQ/diego-ph-f-Iq0t-ET6llw-unsplash.jpg" alt="client photo" />
                 
                 <div className="mt-2 md:mx-6">
                     <div>

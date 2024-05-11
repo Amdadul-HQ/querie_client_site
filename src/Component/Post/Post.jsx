@@ -9,7 +9,7 @@ const Post = () => {
     useEffect(()=> {
         axios.get('http://localhost:5000/queryPost')
         .then(res => {
-            setPosts(res.data)
+            setPosts(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)))
         })
         .catch(err => {
             console.log(err.message);
@@ -19,7 +19,7 @@ const Post = () => {
     },[])
 
     return (
-        <section className="font-montserrat my-20 container mx-auto">
+        <section className="font-montserrat my-20 container mx-auto lg:px-0 px-5">
             <h1 className="text-3xl text-center font-semibold">Recently Post</h1>
             <p className="text-xl max-w-[1100px] mt-4 text-center mx-auto">Welcome to TechZone Hub, where technology meets innovation! <br /> Explore the latest trends, reviews, and guides on gadgets, smartphones, laptops, wearables, and more.</p>
             
