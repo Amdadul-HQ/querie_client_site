@@ -22,7 +22,7 @@ const Recommendation = () => {
     const {data : posts,refetch} = useQuery({
         queryKey:['myrecommendation',user?.email],
         queryFn: async()=> {
-            const res = await axios.get(`http://localhost:5000/myrecommendation?email=${user?.email}`)
+            const res = await axios.get(`http://localhost:5000/myrecommendation?email=${user?.email}`,{withCredentials:true})
             return res.data
         }
     })

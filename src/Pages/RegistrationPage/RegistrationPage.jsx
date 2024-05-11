@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../assets/shopnow.png'
 import bgImg from '../../assets/signup.jpg'
 import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
 const RegistrationPage = () => {
-    const {createUser,signInGoogle,updateUser} = useAuth()
+  const navigate = useNavigate()
+    const {createUser,signInGoogle,updateUser,logOut} = useAuth()
 
     const handleGoogleSignIn = () => {
         signInGoogle()
@@ -32,6 +33,8 @@ const RegistrationPage = () => {
             updateUser(name,photo)
             .then(result => {
                 toast.success('Account Created Successfully')
+                logOut()
+                navigate('/login')
                 console.log(result);
             })
             .catch(error => {

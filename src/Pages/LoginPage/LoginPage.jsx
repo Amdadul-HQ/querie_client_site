@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../../assets/shopnow.png'
 import bgImg from '../../assets/shopingnowbg.jpg'
 import useAuth from "../../Hooks/useAuth";
@@ -7,7 +7,13 @@ import toast from "react-hot-toast";
 const LoginPage = () => {
 
     const {signInGoogle, signIn} = useAuth()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const history = location.state?.from || '/';
 
+    const navigateNow = () => {
+        setTimeout(() => { navigate(history, { replace: true }) }, 1)
+    }
 
 
 
@@ -16,6 +22,7 @@ const LoginPage = () => {
         .then(result => {
             if(result.user){
                 toast.success('Login Successful')
+                navigateNow()
             }
         })
         .catch(error => {
@@ -38,6 +45,7 @@ const LoginPage = () => {
         .then(res => {
             console.log(res.user);
             toast.success('Login Successful')
+            navigateNow()
         })
         .catch(error => {
             console.log(error.message);

@@ -1,11 +1,13 @@
 import axios from 'axios';
 import useAuth from '../../Hooks/useAuth';
 import addbg from '../../assets/addbg.png'
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const AddQuery = () => {
 
     const {user} = useAuth()
-
+    const navigate = useNavigate()
 
     const handleAddPost = e => {
         e.preventDefault()
@@ -29,6 +31,8 @@ const AddQuery = () => {
         axios.post('http://localhost:5000/queryPost',queryPost,{withCredentials:true})
         .then(res => {
             console.log(res.data);
+            toast.success('Query Add Successful')
+            navigate('/myqueries')
         })
         .catch(error => {
             console.log(error.message);
