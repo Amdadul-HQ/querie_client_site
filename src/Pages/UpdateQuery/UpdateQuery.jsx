@@ -1,9 +1,10 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import addbg from '../../assets/addbg.png'
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
 const UpdateQuery = () => {
+    const navigate = useNavigate()
     const{user} = useAuth()
     const {_id,productImg,queryTitle,productName,brandName,alternationReason} = useLoaderData()
 
@@ -27,6 +28,7 @@ const UpdateQuery = () => {
         .then(res => {
             // console.log(res.data);
             toast.success('Query Update Successfully!!')
+            navigate('/myqueries')
         })
         .catch(error => {
             console.log(error.message);
