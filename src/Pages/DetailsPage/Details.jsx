@@ -9,7 +9,7 @@ const Details = () => {
     const post = useLoaderData()
     const {user} = useAuth()
 
-    const {_id,productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto,recommendationCount} = post
+    const {_id,productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto} = post
 
     const {data,refetch} = useQuery({
         queryKey : ['recomendation'],
