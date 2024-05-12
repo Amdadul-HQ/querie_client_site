@@ -39,9 +39,9 @@ const Details = () => {
         const currentDate = new Date()
         const recommendDate = currentDate.toLocaleString()
 
-        if(user?.email === userEmail){
-            return toast.error("You can't Recommand Your Self!!")
-        }
+        // if(user?.email === userEmail){
+        //     return toast.error("You can't Recommand Your Self!!")
+        // }
 
         const recommendData = {
            userName,queryId,title,productname,recommendDate,recommendQuerieTitle,recommendBrandName,recommendProductName,recommendReasonDetails,recommendProductImg,recommendUserEmail,recommendUserName,recommendUserPhoto,userEmail
