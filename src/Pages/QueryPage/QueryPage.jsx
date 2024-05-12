@@ -73,7 +73,7 @@ const QueryPage = () => {
                     <button type='submit' className='text-xl text-black hover:text-white hover:bg-black border-2 border-black transition duration-300 lg:px-5 px-2 py-2 rounded-lg'>Search</button>
                 </div>
             </form>
-                <div className='flex'>
+                <div className='flex my-5 ml-5'>
                     <button onClick={handleChange} className='text-xl text-black hover:text-white hover:bg-black border-2 border-black transition duration-300 lg:px-5 px-2 py-2 rounded-lg'>Change Layout</button>
                 </div>
                    <div className={`grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 ${changeLayout ? 'xl:grid-cols-3' : 'xl:grid-cols-2'}`}>
