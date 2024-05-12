@@ -100,7 +100,7 @@ const Details = () => {
             </div>
            <div className="container mx-auto my-10">
                 {
-                    data && data.map(i => <div className="bg-[rgba(39,39,39,0.05)] p-4 rounded-tl-none rounded-xl border gap-x-5 max-w-[770px] lg:flex items-center" key={i._id}>
+                    data && data.map(i => <div className="bg-[rgba(39,39,39,0.05)] p-4 my-5 rounded-tl-none rounded-xl border gap-x-5 max-w-[770px] lg:flex items-center" key={i._id}>
                         <div className="w-1/2">
                             <img className="w-full h-full" src={i.recommendProductImg} alt="" />
                             <div>
