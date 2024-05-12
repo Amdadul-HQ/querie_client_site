@@ -79,7 +79,7 @@ const Recommendation = () => {
 
 
     return (
-        <div>
+        <div className="overflow-x-auto">
           <Helmet>
             <title>
               My Recommendation
