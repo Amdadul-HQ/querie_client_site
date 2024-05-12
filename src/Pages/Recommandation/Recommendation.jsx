@@ -89,7 +89,7 @@ const Recommendation = () => {
     {/* head */}
     <thead>
       <tr className="text-xl text-black">
-        <th>Product Details</th>
+        <th>Product Image</th>
         <th>Published Date</th>
         <th>Recommended Person Email</th>
         <th>Product Brand</th>
@@ -101,19 +101,11 @@ const Recommendation = () => {
       {
         posts && posts.map(post => <tr key={post._id}>
             <td>
-              <div className="flex items-center gap-3">
                 <div className="avatar">
                   <div className="w-36 h-36 rounded-xl">
                     <img src={post.recommendProductImg} alt="" />
                   </div>
                 </div>
-                <div>
-                  <div className="font-normal">
-                    <p className="text-base pb-1 border-b-2 mb-3 border-black w-fit">{post.recommendQuerieTitle.slice(0,30)}...</p>
-                    {/* <p className="text-base">{post.recommendReasonDetails.slice(0,80)}...</p> */}
-                  </div>
-                </div>
-              </div>
             </td>
             <td className="text-base text-black">
               {post.recommendDate}

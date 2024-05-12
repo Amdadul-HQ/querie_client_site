@@ -69,13 +69,13 @@ const Details = () => {
                     Query Details
                 </title>
             </Helmet>
-            <section className="font-montserrat container mx-auto flex ">
-           <div className="w-1/2">
+            <section className="font-montserrat container mx-auto flex lg:flex-row gap-x-5 flex-col lg:px-0 px-3">
+           <div className="lg:w-1/2">
                 <h1 className="text-3xl font-semibold text-center mb-10">Querie Details</h1>
            <div className="w-full border overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-                <img className="object-cover w-full h-96" src={productImg} alt="Article"/>
+                <img className="object-cover w-full p-2 lg:h-96" src={productImg} alt="Article"/>
 
-                <div className="p-6">
+                <div className="lg:p-6 p-2">
                     <div>
                         <span className="text-xs font-medium text-blue-600 uppercase dark:text-blue-400">{productName}</span>
                         <p className="text-xl">{brandName}</p>
@@ -98,11 +98,31 @@ const Details = () => {
                     </div>
                 </div>
             </div>
+           <div className="container mx-auto my-10">
+                {
+                    data && data.map(i => <div className="bg-[rgba(39,39,39,0.05)] p-4 rounded-tl-none rounded-xl border gap-x-5 max-w-[770px] lg:flex items-center" key={i._id}>
+                        <div className="w-1/2">
+                            <img className="w-full h-full" src={i.recommendProductImg} alt="" />
+                            <div>
+                            </div>
+                        </div>
+                        <div>
+                            <p className="text-xl font-medium border-b border-black">{i.recommendBrandName}</p>
+                            <p>{i.recommendReasonDetails}</p>
+                            <div className="flex items-center gap-x-3 text-base ">
+                                <img className="w-14 h-14 rounded-full p-1 border" src={i.recommendUserPhoto} alt="" />
+                                <p>{i.recommendUserName}</p>
+                            </div>
+                        </div>
+                    </div>)
+                }
+            </div>
+
+
            </div>
-           <div className="w-1/2">
+           <div className="lg:w-1/2">
             <h1 className="text-3xl font-semibold text-center ">Recommendation Form</h1>
-            <div>
-            <form onSubmit={handleRecommend}  className='w-4/5 mx-auto space-y-6 py-7 text-black'>
+            <form onSubmit={handleRecommend}  className='mx-auto space-y-6 lg:py-7 text-black'>
                         <div className='w-full text-black'>
                             <label className=' font-medium' htmlFor='QueryTItle'>Recommendation Query Title</label>
                             <br />
@@ -132,28 +152,9 @@ const Details = () => {
                         </div>
                         <button type='submit' className="text-3xl w-full font-semibold text-black border-2 backdrop-blur-sm px-4 py-2 scale-100 hover:scale-105 transition-all duration-300 rounded-xl hover:text-white hover:bg-black">Recommend</button>
                 </form>
-            </div>
            </div>
         </section>
-            <div className="container mx-auto my-10">
-                {
-                    data && data.map(i => <div className="bg-[rgba(39,39,39,0.05)] p-4 rounded-tl-none rounded-xl border gap-x-5 max-w-[770px] flex items-center" key={i._id}>
-                        <div className="w-1/2">
-                            <img className="w-full h-full" src={i.recommendProductImg} alt="" />
-                            <div>
-                            </div>
-                        </div>
-                        <div>
-                            <p className="text-xl font-medium border-b border-black">{i.recommendBrandName}</p>
-                            <p>{i.recommendReasonDetails}</p>
-                            <div className="flex items-center gap-x-3 text-base ">
-                                <img className="w-14 h-14 rounded-full p-1 border" src={i.recommendUserPhoto} alt="" />
-                                <p>{i.recommendUserName}</p>
-                            </div>
-                        </div>
-                    </div>)
-                }
-            </div>
+            
         </div>
     );
 };
