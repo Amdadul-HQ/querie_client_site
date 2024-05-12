@@ -12,6 +12,7 @@ import QueryPage from "../Pages/QueryPage/QueryPage";
 import Recommendation from "../Pages/Recommandation/Recommendation";
 import UpdateQuery from "../Pages/UpdateQuery/UpdateQuery";
 import PrivateComponet from "../Private/PrivateComponet";
+import LoadingComponent from "../Component/LoadingComponent/LoadingComponent";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/queris',
-                element:<QueryPage/>
+                element:<LoadingComponent><QueryPage/></LoadingComponent>
             },
             {
                 path:'/recommendforme',

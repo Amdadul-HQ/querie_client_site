@@ -72,7 +72,7 @@ const ContextComponent = ({children}) => {
        },[])
 
 
-    const info = {user,loading,createUser,signInGoogle,logOut,signIn,updateUser}
+    const info = {user,loading,createUser,signInGoogle,logOut,signIn,updateUser,setLoading}
     return (
         <AuthContext.Provider value={info}>
             {children}

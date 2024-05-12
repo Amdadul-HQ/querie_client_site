@@ -60,7 +60,7 @@ const Header = () => {
                 <div className='flex items-center gap-x-3'>
                     
                     {
-                        user ? <></> : <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3 text-xl lg:flex hidden' : 'text-xl px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white lg:flex hidden'} to='/login'>Login</NavLink>
+                        user ? <button className='text-xl px-3 lg:flex hidden transition-all py-1 duration-300 hover:bg-black hover:text-white' onClick={handleLogOut}>log Out</button> : <NavLink className={({isActive})=> isActive ? 'bg-black text-white transition-all duration-300 py-1 px-3 text-xl lg:flex hidden' : 'text-xl px-3 transition-all py-1 duration-300 hover:bg-black hover:text-white lg:flex hidden'} to='/login'>Login</NavLink>
                     }
                     <div>
                     <label  className="flex cursor-pointer gap-2">
@@ -76,9 +76,6 @@ const Header = () => {
                             <img className="w-10 h-10 rounded-full " data-tooltip-id="my-tooltip" data-tooltip-place="right" data-tooltip-content={user?.displayName}  src={user?.photoURL || <FaUser className="text-2xl"></FaUser>} alt="" />
                             </div>
                         </div>
-                            <Tooltip className="z-50" anchorSelect="#clickable" data-tooltip-place="left"  clickable>
-                                <button className="z-50" onClick={handleLogOut}><NavLink className="md:hidden lg:flex hidden" >Log Out</NavLink></button>
-                            </Tooltip>
                         
                         </div>
                     }
