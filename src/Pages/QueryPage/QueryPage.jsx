@@ -138,7 +138,7 @@ const QueryPage = () => {
     </button>
 
     {
-        pages && pages.map((page,inx) => <button onClick={() => handlePagenation(page)} key={inx}  className={`hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 ${currentPage == page && 'bg-blue-500 text-white'} hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200`}>
+        pages && pages.map((page,inx) => <button onClick={() => handlePagenation(page)} key={inx}  className={`hidden px-4 py-2 mx-1 text-black transition-colors duration-300 transform  rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 ${currentPage == page ? 'bg-blue-500 text-white' : 'text-black bg-slate-600'} hover:bg-blue-500 dark:hover:bg-blue-500`}>
         {page}
     </button>)
     }
