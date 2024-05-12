@@ -28,10 +28,10 @@ const AddQuery = () => {
         
         
         const queryPost = {productImg,queryTitle,productName,brandName,alternationReason,postedDate,email,name,userPhoto,recommendationCount}
-       console.log(queryPost);
-        axios.post('http://localhost:5000/queryPost',queryPost,{withCredentials:true})
+    //    console.log(queryPost);
+        axios.post('https://query-rouge.vercel.app/queryPost',queryPost,{withCredentials:true})
         .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             toast.success('Query Add Successful')
             navigate('/myqueries')
         })

@@ -14,7 +14,7 @@ const Details = () => {
     const {data,refetch} = useQuery({
         queryKey : ['recomendation'],
         queryFn:async ()=>{
-            const res = await axios.get(`http://localhost:5000/queryRecommendation/${_id}`,{withCredentials:true})
+            const res = await axios.get(`https://query-rouge.vercel.app/queryRecommendation/${_id}`,{withCredentials:true})
             return res.data
         }
     })
@@ -46,19 +46,19 @@ const Details = () => {
         const recommendData = {
            userName,queryId,title,productname,recommendDate,recommendQuerieTitle,recommendBrandName,recommendProductName,recommendReasonDetails,recommendProductImg,recommendUserEmail,recommendUserName,recommendUserPhoto,userEmail
         }
-        axios.post('http://localhost:5000/recommendationPost',recommendData)
+        axios.post('https://query-rouge.vercel.app/recommendationPost',recommendData)
         .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             toast.success('Recommendation Successful')
             form.reset()
             refetch()
         })
         .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
             toast.error(error.message.split('/')[1].split(')')[0])
         })
 
-        console.log(recommendData);
+        // console.log(recommendData);
 
 
     }

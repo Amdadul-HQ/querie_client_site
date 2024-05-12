@@ -14,7 +14,7 @@ const MyQuery = () => {
     const {data,refetch} = useQuery({
         queryKey:['post',user?.email],
         queryFn: async() => {
-            const res = await axios.get(`http://localhost:5000/queryPost?email=${user.email}`,{withCredentials:true})
+            const res = await axios.get(`https://query-rouge.vercel.app/queryPost?email=${user.email}`,{withCredentials:true})
             return res.data
         }
     })
@@ -37,9 +37,9 @@ const MyQuery = () => {
         reverseButtons: true
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:5000/query/${id}`)
+          axios.delete(`https://query-rouge.vercel.app/query/${id}`)
         .then(res => {
-          console.log(res.data);
+          // console.log(res.data);
           swalWithBootstrapButtons.fire({
             title: "Deleted!",
             text: "Your file has been deleted.",

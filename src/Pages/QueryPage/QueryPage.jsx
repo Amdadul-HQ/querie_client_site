@@ -4,10 +4,11 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 
 const QueryPage = () => {
-    const [search,setSearch] = useState()
+    // const [search,setSearch] = useState()
     const [posts,setPosts] = useState()
+    const[changeLayout,setChangeLayout] = useState(true)
     useEffect(()=>{
-        axios.get('http://localhost:5000/queryPost')
+        axios.get('https://query-rouge.vercel.app/queryPost')
         .then(res => {
             setPosts(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)))
             // console.log(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)));
@@ -17,17 +18,21 @@ const QueryPage = () => {
         } )
     },[])
 
-    const handleSearch = e => {
-        e.preventDefault()
-        setSearch(e.target.search.value)
-        axios.get(`http://localhost:5000/searchPost?search=${search}`)
-        .then(res => {
-            console.log(res.data);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+    const handleChange = () => {
+        setChangeLayout(!changeLayout)
     }
+
+    // const handleSearch = e => {
+    //     e.preventDefault()
+    //     setSearch(e.target.search.value)
+    //     axios.get(`https://query-rouge.vercel.app/searchPost?search=${search}`)
+    //     .then(res => {
+    //         console.log(res.data);
+    //     })
+    //     .catch(error => {
+    //         console.log(error.message);
+    //     })
+    // }
     
 
     // function sortByPostedDateAscending(a, b) {
@@ -57,7 +62,7 @@ const QueryPage = () => {
                     All Query
                 </title>
             </Helmet>
-            <form onSubmit={handleSearch} className='flex items-center justify-center gap-x-4'>
+            <form  className='flex items-center justify-center gap-x-4'>
                 <div>
                     <label className="input input-bordered flex mx-auto items-center gap-2">
                         <input type="search" name='search' className="grow" placeholder="Search Product Name" />
@@ -68,7 +73,10 @@ const QueryPage = () => {
                     <button type='submit' className='text-xl text-black hover:text-white hover:bg-black border-2 border-black transition duration-300 lg:px-5 px-2 py-2 rounded-lg'>Search</button>
                 </div>
             </form>
-                   <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 xl:grid-cols-3">
+                <div className='flex'>
+                    <button onClick={handleChange} className='text-xl text-black hover:text-white hover:bg-black border-2 border-black transition duration-300 lg:px-5 px-2 py-2 rounded-lg'>Change Layout</button>
+                </div>
+                   <div className={`grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 ${changeLayout ? 'xl:grid-cols-3' : 'xl:grid-cols-2'}`}>
             {
                 posts && posts.slice(0,6).map(post => <div className="border p-5 rounded-xl" key={post._id}>
                     <div className="relative">

@@ -45,21 +45,21 @@ const ContextComponent = ({children}) => {
             const userEmail = currentUser?.email || user?.email;
             const loggUser = {email:userEmail}
             if(currentUser){
-                axios.post('http://localhost:5000/jwt',loggUser,{withCredentials:true})
+                axios.post('https://query-rouge.vercel.app/jwt',loggUser,{withCredentials:true})
                 .then(res => {
-                    console.log('token response',res.data);
+                    // console.log('token response',res.data);
                 })
                 .catch(error =>  {
                     console.log(error.message);
                 })
                 setUser(currentUser)
                 setLoading(false)
-                console.log(currentUser);
+                // console.log(currentUser);
             }
             else{
-                axios.post('http://localhost:5000/logout',loggUser,{withCredentials:true})
+                axios.post('https://query-rouge.vercel.app/logout',loggUser,{withCredentials:true})
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                 })
                 .catch(error => {
                     console.log(error.message);

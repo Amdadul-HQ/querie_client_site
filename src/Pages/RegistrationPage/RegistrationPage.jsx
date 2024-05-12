@@ -15,7 +15,7 @@ const RegistrationPage = () => {
             }
         })
         .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
             toast.error(`${error.message.split('/')[1].split(')')[0]}`)
         })
     }
@@ -35,14 +35,14 @@ const RegistrationPage = () => {
                 toast.success('Account Created Successfully')
                 logOut()
                 navigate('/login')
-                console.log(result);
+                // console.log(result);
             })
             .catch(error => {
                 console.log(error.message);
             })
         })
         .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
             toast.error(`${error.message.split('/')[1].split(')')[0]}`)
         })
         

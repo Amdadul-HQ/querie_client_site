@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 const Recommendation = () => {
     const {user} = useAuth()
     // useEffect(()=> {
-    //     axios.get(`http://localhost:5000/myrecommendation?email=${user?.email}`)
+    //     axios.get(`https://query-rouge.vercel.app/myrecommendation?email=${user?.email}`)
     //     .then(res => {
     //         setPosts(res.data)
             
@@ -23,7 +23,7 @@ const Recommendation = () => {
     const {data : posts,refetch} = useQuery({
         queryKey:['myrecommendation',user?.email],
         queryFn: async()=> {
-            const res = await axios.get(`http://localhost:5000/myrecommendation?email=${user?.email}`,{withCredentials:true})
+            const res = await axios.get(`https://query-rouge.vercel.app/myrecommendation?email=${user?.email}`,{withCredentials:true})
             return res.data
         }
     })
@@ -31,7 +31,7 @@ const Recommendation = () => {
     
 
     const handelDelete = id => {
-        console.log(id);
+        // console.log(id);
         const swalWithBootstrapButtons = Swal.mixin({
             customClass: {
               confirmButton: "btn btn-success",
@@ -49,9 +49,9 @@ const Recommendation = () => {
             reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
-              axios.delete(`http://localhost:5000/myrecommendation/${id}`)
+              axios.delete(`https://query-rouge.vercel.app/myrecommendation/${id}`)
             .then(res => {
-              console.log(res.data);
+              // console.log(res.data);
               swalWithBootstrapButtons.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",

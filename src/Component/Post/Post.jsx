@@ -7,7 +7,7 @@ const Post = () => {
     const [posts,setPosts] = useState([])
 
     useEffect(()=> {
-        axios.get('http://localhost:5000/queryPost')
+        axios.get('https://query-rouge.vercel.app/queryPost')
         .then(res => {
             setPosts(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)))
         })

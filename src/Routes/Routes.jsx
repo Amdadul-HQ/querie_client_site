@@ -54,12 +54,12 @@ const router = createBrowserRouter([
             {
                 path:'/details/:id',
                 element:<PrivateComponet><Details/></PrivateComponet>,
-                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`,{credentials:'include'}) 
+                loader:({params})=> fetch(`https://query-rouge.vercel.app/details/${params.id}`,{credentials:'include'}) 
             },
             {
                 path:'/update/:id',
                 element:<PrivateComponet><UpdateQuery/></PrivateComponet>,
-                loader:({params})=> fetch(`http://localhost:5000/details/${params.id}`,{credentials:'include'})
+                loader:({params})=> fetch(`https://query-rouge.vercel.app/details/${params.id}`,{credentials:'include'})
             }
         ]
     }

@@ -27,7 +27,7 @@ const LoginPage = () => {
             }
         })
         .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
             toast.error(`${error.message.split('/')[1].split(')')[0]}`)
         })
     }
@@ -44,12 +44,12 @@ const LoginPage = () => {
 
         signIn(email,password)
         .then(res => {
-            console.log(res.user);
+            // console.log(res.user);
             toast.success('Login Successful')
             navigateNow()
         })
         .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
             toast.error(`${error.message.split('/')[1].split(')')[0]}`)
         })
     }
