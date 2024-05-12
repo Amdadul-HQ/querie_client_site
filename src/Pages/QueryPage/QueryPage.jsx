@@ -14,22 +14,19 @@ const QueryPage = () => {
     const[changeLayout,setChangeLayout] = useState(true)
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/queryallpost?page=${currentPage}&size=${itemPerPage}&search=${search}`)
+        axios.get(`https://query-rouge.vercel.app/queryallpost?page=${currentPage}&size=${itemPerPage}&search=${search}`)
         .then(res => {
             setPosts(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)))
             setLoading(false)
-            // setCount(res.data.length)
-            // console.log(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)));
         })
         .catch(error=> {
             console.log(error.message);
         } )
-    },[currentPage, itemPerPage, search])
+    },[currentPage, itemPerPage, search, setLoading])
     useEffect(()=>{
-        axios.get(`http://localhost:5000/queryCount`)
+        axios.get(`https://query-rouge.vercel.app/queryCount`)
         .then(res => {
             setCount(res.data.count)
-            // console.log(res.data.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate)));
         })
         .catch(error=> {
             console.log(error.message);
@@ -61,38 +58,10 @@ const QueryPage = () => {
     const handleSearch = e => {
         e.preventDefault()
         setSearch(e.target.search.value)
-        // axios.get(`https://query-rouge.vercel.app/searchPost?search=${search}`)
-        // .then(res => {
-        //     console.log(res.data);
-        // })
-        // .catch(error => {
-        //     console.log(error.message);
-        // })
     }
     const handleReset = () => {
         setSearch('')
     }
-    
-
-    // function sortByPostedDateAscending(a, b) {
-    //     const dateA = new Date(a.postedDate);
-    //     const dateB = new Date(b.postedDate);
-    //     return dateA - dateB;
-    // }
-
-    // const sortedDate = posts.sort(sortByPostedDateAscending)
-    // console.log(sortedDate);
-
-
-    // const customSort = (a, b) => new Date(b.postedDate) - new Date(a.postedDate);
-
-    // const sortDate = posts.sort((a,b)=> new Date(b.postedDate) - new Date(a.postedDate))
-    
-    // console.log(sortDate);
-
-    // const dates = ["2024-05-11", "2023-03-15", "2022-09-30"];
-// const sortedDates = dates.sort((a, b) => new Date(b) - new Date(a));
-
 
     return (
         <section className='container mx-auto font-poppins'>
@@ -101,11 +70,11 @@ const QueryPage = () => {
                     All Query
                 </title>
             </Helmet>
-            <div className='flex gap-x-3 justify-center'>
-            <form onSubmit={handleSearch} className='flex items-center justify-center gap-x-4'>
+            <div className='flex gap-x-1 lg:gap-x-3 justify-center'>
+            <form onSubmit={handleSearch} className='flex items-center justify-center gap-x-1 lg:gap-x-4'>
                 <div>
                     <label className="input input-bordered flex mx-auto items-center gap-2">
-                        <input type="search" name='search' className="grow" placeholder="Search Product Name" />
+                        <input type="search" name='search' className="lg:grow" placeholder="Search Product Name" />
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clipRule="evenodd" /></svg>
                     </label>
                 </div>
@@ -117,7 +86,7 @@ const QueryPage = () => {
                 <button onClick={handleReset} className='text-xl text-black hover:text-white hover:bg-black border-2 border-black transition duration-300 lg:px-5 px-2 py-2 rounded-lg'>Reset</button>
             </div>
             </div>
-                <div className='flex my-5 ml-5'>
+                <div className='lg:flex my-5 ml-5 hidden'>
                     <button onClick={handleChange} className='text-xl text-black hover:text-white hover:bg-black border-2 border-black transition duration-300 lg:px-5 px-2 py-2 rounded-lg'>Change Layout</button>
                 </div>
                    <div className={`grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2 ${changeLayout ? 'xl:grid-cols-3' : 'xl:grid-cols-2'}`}>
