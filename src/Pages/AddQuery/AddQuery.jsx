@@ -49,7 +49,7 @@ const AddQuery = () => {
                     Add Query
                 </title>
             </Helmet>
-            <div className="w-full  mx-auto rounded-2xl flex h-fit" style={{
+            <div className="w-full  mx-auto flex h-screen justify-center items-center" style={{
                 background: `linear-gradient(45deg,rgba(0,0,0,0.7),rgba(0,0,0,0.4)),url(${addbg})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize:'cover',

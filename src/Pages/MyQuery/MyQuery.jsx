@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import addbg from '../../assets/addbg.png'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 
 const MyQuery = () => {
-    
+  
+  const location = useLocation()
+  const form = location.pathname
   const {user} = useAuth()
-
+  const [showmore,setShowmore] = useState(4)
     const {data,refetch} = useQuery({
         queryKey:['post',user?.email],
         queryFn: async() => {
@@ -18,6 +21,11 @@ const MyQuery = () => {
             return res.data
         }
     })
+    const handleShowmore = () => {
+      if(form =='/myqueries'){
+        setShowmore(showmore+2)
+      }
+    }
 
     const handleDelete = (id) => {
       const swalWithBootstrapButtons = Swal.mixin({
@@ -72,6 +80,8 @@ const MyQuery = () => {
               My Query
             </title>
           </Helmet>
+          {
+            form == '/myqueries' &&
             <div className="w-full h-80 mx-auto rounded-2xl flex justify-center items-center" style={{
                 background: `linear-gradient(45deg,rgba(0,0,0,0.7),rgba(0,0,0,0.4)),url(${addbg})`,
                 backgroundRepeat: 'no-repeat',
@@ -80,14 +90,15 @@ const MyQuery = () => {
                 }}>
                     <Link to='/addquery'><button className="text-3xl font-semibold text-white border-2 backdrop-blur-sm px-4 py-2 scale-95 hover:scale-105 transition-all duration-300 rounded-xl hover:text-black hover:bg-white">Add Query</button></Link>
             </div>
+          }
             <div className="mt-4">
                 <h1 className="text-center font-medium text-3xl border-b-2 border-black w-fit mx-auto pb-2">My Query List</h1>
                 <section className="bg-white dark:bg-gray-900">
-    <div className="container px-6 py-10 mx-auto">
+    <div className="container px-6  mx-auto">
 
         <div className="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
             {
-              data && data.map(post => <div key={post._id} className="lg:flex border-2 border-l-0 rounded-xl">
+              data && data.slice(0,showmore).map(post => <div key={post._id} className="lg:flex border-2 border-l-0 rounded-xl">
               <div className="relative">
                 <img className="object-cover w-full h-56 rounded-lg rounded-r-none " src={post.productImg} alt=""/>
                 <div className="absolute bottom-0 bg-white px-2 gap-x-2 flex items-center py-1 rounded-tr-lg">
@@ -145,6 +156,11 @@ const MyQuery = () => {
               </div>
           </div>)
             }
+        </div>
+        <div className="flex justify-center mt-3">
+        <Link to='/myqueries'>
+        <button onClick={handleShowmore} className={`font-montserrat text-2xl text-center font-semibold text-white hover:bg-white hover:text-black border-2 transition-all duration-500 border-black bg-black py-2 px-3 ${showmore == data?.length && 'hidden'}`}>Show More</button>
+        </Link>
         </div>
     </div>
 </section>

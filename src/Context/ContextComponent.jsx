@@ -69,7 +69,7 @@ const ContextComponent = ({children}) => {
             }
         })
         return () => unSubcribe()
-       },[])
+       },[user?.email])
 
 
     const info = {user,loading,createUser,signInGoogle,logOut,signIn,updateUser,setLoading}

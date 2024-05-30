@@ -13,6 +13,9 @@ import Recommendation from "../Pages/Recommandation/Recommendation";
 import UpdateQuery from "../Pages/UpdateQuery/UpdateQuery";
 import PrivateComponet from "../Private/PrivateComponet";
 import LoadingComponent from "../Component/LoadingComponent/LoadingComponent";
+import DashBoard from "../Layout/DashBoard";
+import MyProfile from "../Pages/DashBoard/MyProfile/MyProfile";
+import JoinQuery from "../Pages/Joinquery+/JoinQuery";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +64,38 @@ const router = createBrowserRouter([
                 path:'/update/:id',
                 element:<PrivateComponet><UpdateQuery/></PrivateComponet>,
                 loader:({params})=> fetch(`https://query-rouge.vercel.app/details/${params.id}`,{credentials:'include'})
+            },
+            {
+                path:'/join',
+                element:<JoinQuery/>
+            }
+
+
+        ]
+    },
+    {
+        path:'/dashboard',
+        element:<DashBoard/>,
+        children:[
+            {
+                path:'/dashboard/profile',
+                element:<PrivateComponet><MyProfile/></PrivateComponet>
+            },
+            {
+                path:'/dashboard/addqueries',
+                element:<PrivateComponet><AddQuery/></PrivateComponet>
+            },
+            {
+                path:'/dashboard/myqueries',
+                element:<PrivateComponet><MyQuery/></PrivateComponet>
+            },
+            {
+                path:'/dashboard/myrecommendation',
+                element:<PrivateComponet><Recommendation/></PrivateComponet>
+            },
+            {
+                path:'/dashboard/recommendationforme',
+                element:<PrivateComponet><MyReommendations/></PrivateComponet>
             }
         ]
     }
