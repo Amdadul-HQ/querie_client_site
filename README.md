@@ -41,13 +41,17 @@ A live demo of the application can be accessed at: [Live Demo](https://shop-now-
    ```bash
    git clone https://github.com/Amdadul-HQ/querie_client_site.git
    
-2. **Set env in env.local**:
+2. **Install dependencies**:
+   ```bash
+   npm i
+   
+3. **Set env in env.local**:
    ```bash
     REACT_APP_API_URL=your_backend_API_URL
     REACT_APP_MONGO_URI=your_MongoDB_connection_string
     REACT_APP_FIREBASE_CONFIG=your_Firebase_configuration
 
-3. **run**:
+4. **run**:
 ```bash
   npm start
 ```
