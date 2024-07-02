@@ -33,7 +33,7 @@ This is a full-stack web application designed to provide users with alternative 
 
 ## Live Demo:
 
-A live demo of the application can be accessed at: [Live Demo](https://shop-now-fc5a4.web.app/)
+A live demo of the application can be accessed at: [Live Demo](https://pathway-pioneers.web.app/)
 
 ## Development Setup:
 
