@@ -53,7 +53,7 @@ A live demo of the application can be accessed at: [Live Demo](https://shop-now-
 
 4. **run**:
 ```bash
-  npm start
+  npm run dev
 ```
 Contributing:
 Front-End: [Amdadul_HQ]
