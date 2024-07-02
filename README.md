@@ -39,7 +39,7 @@ A live demo of the application can be accessed at: [Live Demo](https://shop-now-
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/programming-hero-web-course1/b9a12-client-side-Amdadul-HQ.git
+   git clone https://github.com/Amdadul-HQ/querie_client_site.git
    
 2. **Set env in env.local**:
    ```bash
