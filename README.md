@@ -1,87 +1,57 @@
- 
- *** Alternative Product Information System ***
+# Alternative Product Information System
 
-*This is a full-stack web application designed to provide users with alternative product information, allowing them to query, view, and provide recommendations for various products.*
+This is a full-stack web application designed to provide users with alternative product information, allowing them to query, view, and provide recommendations for various products.
 
-**Features:**
+## Features:
 
-* Responsive Design: The website is optimized for all devices including mobile, tablet, and desktop views.
+- **Responsive Design**: Optimized for mobile, tablet, and desktop views.
+- **User Authentication**: Register and login using email/password or Google Sign-in. Private routes for authenticated users to add queries and view recommendations.
+- **Query Management**: Add, update, and delete queries about products. Query details include product information, user details, and reasons for seeking alternatives.
+- **Recommendations**: View and add recommendations for products.
+- **Search Functionality**: Search queries based on product names.
+- **Layout Customization**: Toggle between different grid layouts on the All Queries page.
+- **Dark/Light Theme**: Toggle between dark and light themes.
+- **Error Handling**: Display relevant error messages during login, registration, and form submissions.
 
-*User Authentication:*
+## Technologies Used:
 
-* Users can register and login using email/password or Google Sign-in.
-Private routes are available for authenticated users to access features like adding queries and viewing recommendations.
-
-**Query Management:**
-
-
-* Users can add, update, and delete their queries about products.
-Query details include product information, user details, and the reason for seeking alternatives.
-
-**Recommendations:**
-
-* Users can view recommendations provided by others for their queries.
-They can also add their own recommendations for specific products.
-
-**Search Functionality:**
-
-* Users can search for queries based on product names to find relevant information easily.
-
-**Layout Customization:**
-
-* Users can toggle between different grid layouts on the All Queries page for improved browsing experience.
-
-**Dark/Light Theme:**
-
-* The application supports toggling between dark and light themes for user preference.
-
-**Error Handling:**
-
-* Relevant error messages are displayed during login, registration, and form submissions to guide users.
-
-**Technologies Used:**
-
-*Frontend:*
-
-* HTML, CSS, JavaScript
-
-* React.js for building user interfaces
-
-* React Router for navigation
-
-* JWT for authentication
-
+**Frontend:**
+- HTML, CSS, JavaScript
+- React.js
+- React Router
+- JWT
+- Tailwind CSS
+- React Icon
+- React Helmet Async
+- Daisy UI
 
 **Backend:**
+- Node.js with Express.js
+- MongoDB
+- JWT
+- Firebase for Google Sign-in authentication
 
-* Node.js with Express.js for server-side logic
+## Live Demo:
 
-* MongoDB for database management
+A live demo of the application can be accessed at: [Live Demo](https://shop-now-fc5a4.web.app/)
 
-* JWT for authentication middleware
+## Development Setup:
 
-**Additional Tools:**
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/programming-hero-web-course1/b9a12-client-side-Amdadul-HQ.git
+   
+2. **Set env in env.local**:
+   ```bash
+    REACT_APP_API_URL=your_backend_API_URL
+    REACT_APP_MONGO_URI=your_MongoDB_connection_string
+    REACT_APP_FIREBASE_CONFIG=your_Firebase_configuration
 
-* Firebase for Google Sign-in authentication
-
-*Tailwind CSS for styling*
-
-*REACT ICON*
-
-*REACT HELMET ASYNC*
-
-*DAISY_UI*
-
-**Live Demo:**
-
-* A live demo of the application can be accessed at: https://shop-now-fc5a4.web.app/
-
+3. **run**:
+```bash
+  npm start
+```
 Contributing:
+Front-End: [Amdadul_HQ]
+Back-End: [Amdadul_HQ]
 
-**Font-End**
-
-[AMDADUL_HQ]
-
-**BACK-END**
-
-[AMDADUL_HQ]
